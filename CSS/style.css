@@ -1,0 +1,81 @@
+/*common_styles_for whole_body*/
+.page {
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Cambria', serif;
+    font-size: 15px;
+    color: #403F3D;
+    background-color: #a0a0a0;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /*overflow-x: hidden;*/
+
+
+    width: 100vw;
+    height: 100vh;
+}
+
+*{
+    scroll-behavior: smooth;
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+ a,h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+ }
+ p {
+    margin: 0;
+ }
+ul,li {
+    padding: 0;
+    margin: 0;
+}
+/*/common_styles_for whole_body*/
+
+/*page-form*/
+.page-form {
+    max-width: 700px; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*from-top / form-bottom common styles*/
+.form-top, .form-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+}
+
+
+/*top-client*/
+.top-client, .top-job {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: right;
+ gap: 12px;
+}
+
+.client-name, .job-type {
+    width:  100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+.name-input {
+  max-width: 50%;
+  width: 100%;
+}
