@@ -2,10 +2,10 @@
 .page {
     margin: 0 auto;
     padding: 0;
-    font-family: 'Cambria', serif;
+    font-family: "Roboto", sans-serif;
     font-size: 15px;
     color: #403F3D;
-    background-color: #a0a0a0;
+    background-color: #d8d8d8;
 
     display:flex;
     flex-direction: column;
@@ -37,45 +37,139 @@ ul,li {
     padding: 0;
     margin: 0;
 }
-/*/common_styles_for whole_body*/
+
 
 /*page-form*/
 .page-form {
-    max-width: 700px; 
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/*from-top / form-bottom common styles*/
-.form-top, .form-bottom {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    gap: 20px;
-}
-
-
-/*top-client*/
-.top-client, .top-job {
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: right;
- gap: 12px;
-}
-
-.client-name, .job-type {
-    width:  100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-}
-.name-input {
-  max-width: 50%;
+  max-width: 700px; 
   width: 100%;
+  max-height: 600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
+
+
+/*COMMON STYLE*/
+  .form-top, .form-bottom {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+   }
+
+
+   .top-client, .top-job,
+   .bottom-service, .bottom-schedule{
+     width: 50%;
+     height: 100%;
+     padding: 10px;
+     border-radius: 10px;
+     display: flex;
+     flex-direction: column;
+     justify-content: start;
+     align-items: right;
+     gap: 12px;
+
+     background-color: #fff;
+     box-shadow: 2px 3px rgba(126, 126, 126, 0.3);
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 400;
+      font-family: "Roboto", sans-serif;
+      color: #636363;
+
+    }
+
+    .letter {
+      text-transform: capitalize;
+    }
+
+    .client-name, .job-type, .bottom-code_area {
+      width:  100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .input {
+      width: 100%;
+      height: 40px;
+      border: solid 1px #a0a0a0;
+      border-radius: 5px; 
+
+      padding: 10px;
+    }
+
+    .input, .name-input, .job-input:focus {
+      outline: 0;
+    }
+    
+    .input, .job-input::placeholder {
+      font-size: 15px;
+      font-weight: 400;
+      font-family: "Roboto", sans-serif;
+      color: #403F3D;
+      opacity: 0.7;
+      
+    }
+
+    .btns {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 15% 0 15%;
+    }
+
+    .btns-create, .btns-save {
+      width: 150px;
+      height: 50px;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      cursor: pointer;
+
+      transition: opacity .2s ease;
+    }
+
+    .btns-create:hover, .btns-save:hover {
+      opacity: 0.7;
+    }
+    .btns-create:hover .create-title{
+      opacity: 1;
+    }
+
+    .create-title, .save-title {
+      text-transform: capitalize;
+      font-size: 15px;
+      font-weight: 400;
+      color: #403F3D;
+      font-family: "Roboto", sans-serif;
+    }
+
+
+/*DETAILED STYLE*/
+/*name inputs*/
+    .job-input {
+      width: 100%;
+      height: 100%;
+      border: solid 1px #c4c4c4;
+      border-radius: 5px;
+      padding: 10px;
+      display: flex;
+      justify-content: start;
+      align-items: start;
+    }
+ 
+    

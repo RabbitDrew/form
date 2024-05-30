@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./CSS/style.css">
+     <!--fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" 
+     rel="stylesheet">
 
-    <title>Document</title>
+    <title>form</title>
 </head>
 <body class="page">
    <main class="page-form">
@@ -14,22 +19,32 @@
         <section class="form-top">
 
             <div class="top-client">
-                <h2 class="title">client details</h2>
+                <h2 class="title"><Span class="letter">client</span> details</h2>
                 <div class="client-name">
-                    <input class="name-input" type="text" placeholder="">
-                    <input class="name-input" type="text" placeholder="">
+                    <input class="input" type="text" placeholder="First name">
+                    <input class="input" type="text" placeholder="Last name">
                 </div>
-                <input type="text" placeholder="">
-                <input type="text" placeholder="">
+                <input class="input" id="job" list="data-list" type="text" placeholder="Phone">
+                <input class="input" type="text" placeholder="Email (optional)">
             </div>
     
             <div class="top-job">
-                <h2 class="title">job details</h2>
+                <h2 class="title"><Span class="letter">job</Span> details</h2>
                 <div class="job-type">
-                    <input type="text" placeholder="">
-                    <input type="text" placeholder="">
+                    <input class="input" list ="job-type" type="text" placeholder="Job type">
+                        <datalist class="input-data" id="job-type">
+                            <option value="Опция 1"></option>
+                            <option value="Опция 2"></option>
+                            <option value="Опция 3"></option>
+                        </datalist>
+                    <input class="input" list="job-source" type="text" placeholder="Job source">
+                        <datalist class="input-data" id="job-source">
+                            <option value="Опция 1"></option>
+                            <option value="Опция 2"></option>
+                            <option value="Опция 3"></option>
+                        </datalist>
                 </div>
-                <input type="text" placeholder="">
+                <input class="job-input" type="text" placeholder="Job description (optional)">
             </div>
 
         </section>
@@ -38,31 +53,62 @@
         <section class="form-bottom">
 
             <div class="bottom-service">
-                <h2 class="title">service location</h2>
+                <h2 class="title"><Span class="letter">service</Span> location</h2>
     
-                <input type="text" placeholder="">
-                <input type="text" placeholder="">
-                <input type="text" placeholder="">
-    
+                <input class="input" list="addres" type="text" placeholder="Adress">
+                    <datalist class="input-data" id="addres">
+                        <option value="Опция 1"></option>
+                        <option value="Опция 2"></option>
+                        <option value="Опция 3"></option>
+                    </datalist>
+                <input class="input" list="city" type="text" placeholder="City">
+                    <datalist class="input-data" id="city">
+                        <option value="Опция 1"></option>
+                        <option value="Опция 2"></option>
+                        <option value="Опция 3"></option>
+                    </datalist>
+                <input class="input" list="state" type="text" placeholder="State">
+                    <datalist class="input-data" id="state">
+                        <option value="Опция 1"></option>
+                        <option value="Опция 2"></option>
+                        <option value="Опция 3"></option>
+                    </datalist>
+        
                  <div class="bottom-code_area">
-                    <input type="text" placeholder="">
-                    <input type="text" placeholder="">
+                    <input class="input"  type="text" placeholder="Zip code">
+                    <input class="input" type="text" placeholder="Area">
                  </div>
             </div>
     
             <div class="bottom-schedule">
 
-               <h2 class="title">service location</h2>
-
-               <input type="text" placeholder="">
+               <h2 class="title"><Span class="letter">schedule</Span></h2>
+               <input class="input" type="date" value="date" placeholder="Start date">
                 <div class="bottom-code_area">
-                    <input type="time" placeholder="start time">
-                    <input type="time" placeholder="end time">
+                    <input class="input time"  type="time" >
+                    <input class="input time"  type="time" >
                 </div>
-                <input type="text" placeholder="">
+                <input class="input" type="text" placeholder="Test select">
             </div>
 
         </section> 
+
+        <section class="btns">
+
+            <div class="btns-create">
+                <h2 class="create-title">
+                    create job
+                </h2>
+            </div>
+
+            <div class="btns-save">
+                <h2 class="save-title">
+                    save info
+                </h2>
+            </div>
+
+        </section>
+
    </main>
 </body>
 
