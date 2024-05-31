@@ -3,21 +3,63 @@ const url = "https://mycompany-sandbox2.pipedrive.com/api/v1/deals?"
 
 const btns = document.querySelectorAll('.btn') 
 const inputs = document.querySelectorAll('.input')
+
+
 const storage = {
-    data:{}
+    data:{},
+    inputsValue: [],
+    regexPhone: /^[0-9+]+$/,
+    regexEmail: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+    regexZipCode: /^\d+$/
 }
 
-function checkInputs (inputs) {
 
+//check getting data 
+function checkInputsValue (inputs, regexPhone, regexEmail, regexZipCode,) {
+   let result = []
+    inputs.forEach((input, i) => {
+        if (i === 2) {
+            if (input.value !=="" && regexPhone.test(input.value)) {
+                result.push(input.value)
+            }else {
+                input.classList.add('input-err')
+                setTimeout(() => {
+                    input.classList.remove('input-err');
+                }, 1000);
+            }   
+        } else if (i === 3) {
+            if (input.value !=="" && regexEmail.test(input.value)) {
+                result.push(input.value)
+            }else {
+                input.classList.add('input-err')
+                setTimeout(() => {
+                    input.classList.remove('input-err');
+                }, 1000);
+            }  
+        } else if (i=== 10) {
+            if (input.value !=="" && regexZipCode.test(input.value)) {
+                result.push(input.value)
+            }else {
+                input.classList.add('input-err')
+                setTimeout(() => {
+                    input.classList.remove('input-err');
+                }, 1000);
+            } 
+        }
+        
+    })
 }
 
+
+
+//create the data 
 function createData (inputs)  {
     const data = {
         "02b61c879eb4866246c82f7c643f6e1ce8d35af8": "", 
         "e2257e4191a9ea1832373c9a226de12474612b5a": "", 
         "7aa77765f15e1262b9a81a37868e144259d3e8c0": "",
         "f0065d20afb083c0b1388759c8018fb36da10c27": "",
-        "bb8ac84cf79e922fcefc68b7a4eac1a7b3158eb7":"",    
+        "bb8ac84cf79e922fcefc68b7a4eac1a7b3158eb7": "",    
         "f733d0cc581c93dbb4292551ee380c3a46ed7f9c": "",
         "58950237b019d5a169f18a3c2effe315df2fea33": "",
         "e6aecd97538377e2d9e849296d8ebe276193ba98": "",
@@ -41,33 +83,33 @@ function createData (inputs)  {
     console.log(data)
 return data
 } 
-
+//send the data 
 function sentData (data, url, key) {
     fetch(url + key, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-         data
       },
       body: JSON.stringify(
         {...data,
-         title: 'Название сделки' 
+         title: 'new deal' 
         }
     ),
     })
-    .then(response => response.json())
+    .then(response => response.json(console.log()))
     .then(data => console.log(data))
     .catch((error) => console.error('Ошибка:', error));
-
-
 }
-
-
 btns.forEach((btn, i) => {
     if (i === 0) {
         btn.addEventListener('click', () => {
-          storage.data =  createData(inputs)
-          sentData (storage.data, url, key)
+        checkInputsValue (inputs, 
+            storage.regexPhone, 
+            storage.regexEmail,
+            storage.regexZipCode
+        )
+        //storage.data =  createData(inputs)
+         //sentData (storage.data, url, key)
         })
-    }
+    } 
 } )

@@ -11,10 +11,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    /*overflow-x: hidden;*/
-
-
     width: 100vw;
     height: 100vh;
 }
@@ -158,8 +154,33 @@ ul,li {
       font-family: "Roboto", sans-serif;
     }
 
+     .input-data {
+      width: 100%;
+      height: 100%;
+     }
+     
+    .input-err{
+      animation: inputErr 1.0s ease;
+    }
+
+    @keyframes inputErr {
+      0% {
+        border: solid 1px #a0a0a0;
+      }
+      50% {
+        border: solid 1px rgb(121, 1, 1);
+      }
+      100% {
+        border: solid 1px #a0a0a0;
+      }
+    }
 
 /*DETAILED STYLE*/
+/*name and surname inputs*/
+
+.name, .surname {
+  text-transform: capitalize;
+}
 /*name inputs*/
     .job-input {
       width: 100%;
@@ -172,4 +193,4 @@ ul,li {
       align-items: start;
     }
  
-    
+  
