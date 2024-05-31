@@ -21,10 +21,10 @@
             <div class="top-client">
                 <h2 class="title"><Span class="letter">client</span> details</h2>
                 <div class="client-name">
-                    <input class="input" type="text" placeholder="First name">
-                    <input class="input" type="text" placeholder="Last name">
+                    <input class="input name" type="text" placeholder="First name">
+                    <input class="input surname" type="text" placeholder="Last name">
                 </div>
-                <input class="input" id="job" list="data-list" type="text" placeholder="Phone">
+                <input class="input" type="" placeholder="Phone">
                 <input class="input" type="text" placeholder="Email (optional)">
             </div>
     
@@ -33,18 +33,18 @@
                 <div class="job-type">
                     <input class="input" list ="job-type" type="text" placeholder="Job type">
                         <datalist class="input-data" id="job-type">
-                            <option value="Опция 1"></option>
-                            <option value="Опция 2"></option>
-                            <option value="Опция 3"></option>
+                            <option>type</option>
+                            <option></option>
+                            <option></option>
                         </datalist>
                     <input class="input" list="job-source" type="text" placeholder="Job source">
                         <datalist class="input-data" id="job-source">
-                            <option value="Опция 1"></option>
-                            <option value="Опция 2"></option>
-                            <option value="Опция 3"></option>
+                            <option></option>
+                            <option></option>
+                            <option></option>
                         </datalist>
                 </div>
-                <input class="job-input" type="text" placeholder="Job description (optional)">
+                <input class="input job-input" type="text" placeholder="Job description (optional)">
             </div>
 
         </section>
@@ -57,26 +57,21 @@
     
                 <input class="input" list="addres" type="text" placeholder="Adress">
                     <datalist class="input-data" id="addres">
-                        <option value="Опция 1"></option>
-                        <option value="Опция 2"></option>
-                        <option value="Опция 3"></option>
                     </datalist>
                 <input class="input" list="city" type="text" placeholder="City">
                     <datalist class="input-data" id="city">
-                        <option value="Опция 1"></option>
-                        <option value="Опция 2"></option>
-                        <option value="Опция 3"></option>
                     </datalist>
                 <input class="input" list="state" type="text" placeholder="State">
                     <datalist class="input-data" id="state">
-                        <option value="Опция 1"></option>
-                        <option value="Опция 2"></option>
-                        <option value="Опция 3"></option>
                     </datalist>
         
                  <div class="bottom-code_area">
-                    <input class="input"  type="text" placeholder="Zip code">
-                    <input class="input" type="text" placeholder="Area">
+                    <input class="input" list="zip_code" type="text" placeholder="Zip code">
+                    <datalist class="inphttp://192.168.100.127:5500/index.htmlut-data" id="zip_code">
+                    </datalist>
+                    <input class="input" list="area-list" type="text" placeholder="Area">
+                    <datalist class="input-data" id="area-list">
+                    </datalist>
                  </div>
             </div>
     
@@ -95,13 +90,13 @@
 
         <section class="btns">
 
-            <div class="btns-create">
+            <div class="btns-create btn">
                 <h2 class="create-title">
                     create job
                 </h2>
             </div>
 
-            <div class="btns-save">
+            <div class="btns-save btn">
                 <h2 class="save-title">
                     save info
                 </h2>
