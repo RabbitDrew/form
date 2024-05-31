@@ -7,53 +7,73 @@ const inputs = document.querySelectorAll('.input')
 
 const storage = {
     data:{},
-    inputsValue: [],
-    regexPhone: /^[0-9+]+$/,
-    regexEmail: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
-    regexZipCode: /^\d+$/
+    inputsValue: []
 }
 
 
+function validation (input, regex) {
+    let result = ""
+    if (input.value !=="" && regex.test(input.value)) {
+        result = input.value
+    }else {
+        result = undefined
+        input.classList.add('input-err')
+        setTimeout(() => {
+            input.classList.remove('input-err');
+        }, 1000);
+    }  
+    return result 
+}
+
 //check getting data 
-function checkInputsValue (inputs, regexPhone, regexEmail, regexZipCode,) {
-   let result = []
+function checkInputsValue (inputs, callback) {
+   const storage = {
+    result: [], 
+    regex: {
+        phone: /^[0-9+]+$/,
+        email:/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+        zip: /^\d+$/
+    }
+   }
+
     inputs.forEach((input, i) => {
         if (i === 2) {
-            if (input.value !=="" && regexPhone.test(input.value)) {
-                result.push(input.value)
-            }else {
-                input.classList.add('input-err')
-                setTimeout(() => {
-                    input.classList.remove('input-err');
-                }, 1000);
-            }   
+            storage.result.push(callback(input,storage.regex.phone )) 
         } else if (i === 3) {
-            if (input.value !=="" && regexEmail.test(input.value)) {
-                result.push(input.value)
-            }else {
-                input.classList.add('input-err')
-                setTimeout(() => {
-                    input.classList.remove('input-err');
-                }, 1000);
-            }  
+            storage.result.push(callback(input,storage.regex.email))  
         } else if (i=== 10) {
-            if (input.value !=="" && regexZipCode.test(input.value)) {
-                result.push(input.value)
+            storage.result.push(callback(input,storage.regex.zip))
+        }else if ( i ===  6) {
+            if (input.value !=="") {
+                storage.result.push(input.value)
+            } else {
+                storage.result.push(false)
+            }
+        } else {
+            if (input.value !=="") {
+                storage.result.push(input.value)
             }else {
+                storage.result.push(undefined)
                 input.classList.add('input-err')
                 setTimeout(() => {
                     input.classList.remove('input-err');
                 }, 1000);
             } 
         }
-        
     })
+   if (storage.result.some(el => el === undefined)) {
+        return 
+   }else {
+     console.log(storage.result)
+     return storage.result
+   }
 }
-
-
 
 //create the data 
 function createData (inputs)  {
+if (inputs === undefined) {
+    return 
+} else {
     const data = {
         "02b61c879eb4866246c82f7c643f6e1ce8d35af8": "", 
         "e2257e4191a9ea1832373c9a226de12474612b5a": "", 
@@ -75,41 +95,46 @@ function createData (inputs)  {
 
     let i = 0;
     for (let k in data) {
-            if (inputs[i] !== undefined) {
-                data[k] = inputs[i].value
+            if (inputs !== undefined && inputs[i] !== undefined || inputs[i] === false ) {
+                data[k] = inputs[i]
                 i++;
-            }
+            } else {{
+                console.log("хз")
+            }}
     }
-    console.log(data)
-return data
+        return data
+    }
 } 
+
 //send the data 
 function sentData (data, url, key) {
-    fetch(url + key, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(
-        {...data,
-         title: 'new deal' 
-        }
-    ),
-    })
-    .then(response => response.json(console.log()))
-    .then(data => console.log(data))
-    .catch((error) => console.error('Ошибка:', error));
+    if (data === undefined) {
+        console.log("there isn't any data")
+    } else {
+        fetch(url + key, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(
+              {...data,
+               title: 'new deal' 
+              }
+          ),
+          })
+          .then(response => response.json(console.log()))
+          .then(data => console.log(data))
+          .catch((error) => console.error('Ошибка:', error));
+    }
 }
+
+
 btns.forEach((btn, i) => {
     if (i === 0) {
         btn.addEventListener('click', () => {
-        checkInputsValue (inputs, 
-            storage.regexPhone, 
-            storage.regexEmail,
-            storage.regexZipCode
-        )
-        //storage.data =  createData(inputs)
-         //sentData (storage.data, url, key)
+        storage.inputsValue = checkInputsValue (inputs, validation)
+        storage.data = createData(storage.inputsValue)
+        sentData (storage.data, url, key)
         })
     } 
 } )
