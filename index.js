@@ -1,60 +1,73 @@
 const key = "api_token=024ef60134c41eab4347353f87af786df72a4243"
-const url = "https://mycompany-sandbox2.pipedrive.com/api/v1/deal/1?"
+const url = "https://mycompany-sandbox2.pipedrive.com/api/v1/deals?"
 
 const btns = document.querySelectorAll('.btn') 
 const inputs = document.querySelectorAll('.input')
-console.log(inputs)
+const storage = {
+    data:{}
+}
 
+function checkInputs (inputs) {
+
+}
 
 function createData (inputs)  {
-const data ={
-    clienData: {
-        firstName:"", 
-        lastName:"", 
-        phone:"", 
-        email:"", 
-    },
-    jobData:{
-        JobType:"", 
-        jobSource:"",
-        jobDescription:"",
-    },
-    serviceData:{
-        adress: "",
-        city:"", 
-        state:"", 
-        zipCode:"", 
-        area:""
-    },
-    schedule: {
-        date: "",
-        startTime:"", 
-        endTime:"",
-        testSelect:""
-    }
-}
+    const data = {
+        "02b61c879eb4866246c82f7c643f6e1ce8d35af8": "", 
+         "e2257e4191a9ea1832373c9a226de12474612b5a": "", 
+            phone: "",
+            email: "",
+            job_type: "",    
+            job_source: "",
+            job_description: "",
+            address: "",
+            city: "",
+            state: "",
+            zip_code: "",  
+            area: "",
+            date: "",
+            start_time: "",  
+            end_time: "",    
+            test_select: ""
+    };
 
-for ( let k in data) {
-    for (let j in k) {
-        j = inputs[j].textContent 
+    let i = 0;
+    for (let k in data) {
+            if (inputs[i] !== undefined) {
+                data[k] = inputs[i].value
+                i++;
+            }
     }
-}
-
+    console.log(data)
+return data
 } 
 
+function sentData (data, url, key) {
+    fetch(url + key, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+         data
+      },
+      body: JSON.stringify(
+        {...data,
+         title: 'Название сделки' 
+        }
+    ),
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch((error) => console.error('Ошибка:', error));
 
 
-
-
-
-
-
+}
 
 
 btns.forEach((btn, i) => {
     if (i === 0) {
         btn.addEventListener('click', () => {
-            createData(inputs)
+          storage.data =  createData(inputs)
+          sentData (storage.data, url, key)
         })
     }
 } )
