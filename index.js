@@ -14,9 +14,9 @@ function checkInputs (inputs) {
 function createData (inputs)  {
     const data = {
         "02b61c879eb4866246c82f7c643f6e1ce8d35af8": "", 
-         "e2257e4191a9ea1832373c9a226de12474612b5a": "", 
-            phone: "",
-            email: "",
+        "e2257e4191a9ea1832373c9a226de12474612b5a": "", 
+        "7aa77765f15e1262b9a81a37868e144259d3e8c0": "",
+        "f0065d20afb083c0b1388759c8018fb36da10c27": "",
             job_type: "",    
             job_source: "",
             job_description: "",
